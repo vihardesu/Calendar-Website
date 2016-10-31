@@ -2,7 +2,12 @@
 ini_set("session.cookie_httponly", 1);
 session_start();
 header("Content-Type: application/json");
-
+$postToken = $_POST['token'];
+$sesToken = $_SESSION['token'];
+if($postToken == $sesToken){
+	echo "yay";
+	exit;
+}
 if(isset($_SESSION['Username'])){
 $mysqli = new mysqli('localhost', 'calendarUser', 'vihar', 'calendar');
 	if($mysqli->connect_errno) {
@@ -32,7 +37,7 @@ else{
 	echo mysqli_error($mysqli);
 	echo json_encode(array(
 		"success"=>false,
-		"message"=> "you suck"
+		"message"=> "bummer, it didn't work"
 		));
 }
 

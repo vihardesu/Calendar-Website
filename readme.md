@@ -14,3 +14,10 @@ Creative Portions
 Notes:
 1. Our code passes through the JSHint Processor with a few exceptions that are caused by the Pre-Built Calendar API, JQuery syntax and helper methods. We can not change those things but otherwise our code should be syntactically sound.
 2. Our code also passes the W3C Validator with 5 warnings all related to one issue: certain code may not work with all browser types. After going over it with Brian Lam, he said it was fine.
+
+
+Login info:
+Username	Pass
+andrew      lol
+whar	    pls
+Master		guest

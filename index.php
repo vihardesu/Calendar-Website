@@ -93,17 +93,16 @@ Go To Date:
   	<input data-role="none" type="time" id="editTime">
   	<button data-role="none" id="editSubmit">Edit</button>
   </div>
-<input type="hidden" name="token" value=<?php echo $_SESSION['token'];?> />
+<input type="hidden" name="token" value="" />
 <script type="text/javascript">
 $("#editEventBox").hide();
 //for Login and reg //---------------------------------------------------------------------------
 	function loginAjax(event){
 		var username = document.getElementById("username").value;
 		var password = document.getElementById("password").value;
-		var token = $("input[name=csrf]").val();
 		//make url-encoded string for passing post data
 		
-		var dataString = "username="+encodeURIComponent(username)+"&password="+encodeURIComponent(password)+"&token="+encodeURIComponent(token);
+		var dataString = "username="+encodeURIComponent(username)+"&password="+encodeURIComponent(password);
 
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", "login_ajax.php", true);
@@ -113,6 +112,8 @@ $("#editEventBox").hide();
 			var jsonData = JSON.parse(event.target.responseText);
 			if(jsonData.success){
 				alert("you're logged in as "+username);
+				var token = jsonData.token;
+				$("input[name=csrf]").val(token);
 				clearInputs();
 				getUser();
 			}
@@ -128,8 +129,7 @@ $("#editEventBox").hide();
 	function regAjax(event){
 		var newUsername = document.getElementById("newUsername").value;
 		var newPass = document.getElementById("newPass").value;
-		var token = $("input[name=csrf]").val();
-		var dataString = "newUsername="+encodeURIComponent(newUsername)+"&newPass="+encodeURIComponent(newPass)+"&token="+encodeURIComponent(token);
+		var dataString = "newUsername="+encodeURIComponent(newUsername)+"&newPass="+encodeURIComponent(newPass);
 
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", "reg_ajax.php", true);
@@ -295,10 +295,9 @@ function refreshCalendar(){
 $(document).ready(function(){
 		$(document).on("click", ".date",  function(event){
 			document.getElementById("displayedEvents").innerHTML = "<h4>This day's events</h4>";
-			var token = $("input[name=csrf]").val();
 
 			var tdId = event.target.id;
-			var dataString = "tdId="+encodeURIComponent(tdId)+"&token="+encodeURIComponent(token);
+			var dataString = "tdId="+encodeURIComponent(tdId);
 
 			var xhr = new XMLHttpRequest();
 			xhr.open("POST", "displayEvents_ajax.php", true);
@@ -330,6 +329,7 @@ function editEvent(id){
 		var newTitle = document.getElementById("editTitle").value;
 		var newDate = document.getElementById("editDate").value;
 		var token = $("input[name=csrf]").val();
+		
 		var newTime = document.getElementById("editTime").value;
 		var dataString = "id="+encodeURIComponent(thisId)+"&newTitle="+encodeURIComponent(newTitle)+"&newDate="+encodeURIComponent(newDate)+"&newTime="+encodeURIComponent(newTime)+"&token="+encodeURIComponent(token);
 		xhr.open("POST", "editEvent_ajax.php", true);
@@ -374,11 +374,10 @@ function uploadEvent(event){
 		var title = document.getElementById("eventTitle").value;
 		var time = document.getElementById("eventTime").value;
 		//var others = document.getElementById("others").value;
-		var token = $("input[name=csrf]").val();
 		//alert(others);
 		//make url-encoded string for passing post data
 		
-		var dataString = "date="+encodeURIComponent(date)+"&title="+encodeURIComponent(title)+"&time="+encodeURIComponent(time)+"&token="+encodeURIComponent(token);
+		var dataString = "date="+encodeURIComponent(date)+"&title="+encodeURIComponent(title)+"&time="+encodeURIComponent(time);
 
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", "uploadEvent_ajax.php", true);

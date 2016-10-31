@@ -31,7 +31,8 @@ if(isset($username) && !empty($username) && isset($password) && !empty($password
 		$_SESSION['token'] = substr(md5(rand()), 0, 10);
 		echo json_encode(array(
 		"success" =>true,
-		"username"=>htmlentities($user)
+		"username"=>htmlentities($user),
+		"token"=>$_SESSION['token']
 		));
 	exit;
 	}
