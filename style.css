@@ -1,0 +1,55 @@
+table, th, td{
+	border: 1px solid black;
+}
+th{
+	background-color: #e60000;
+}
+td{
+	background-color: #ef99a7;
+	height: 80px;
+}
+td:hover { 
+    background-color: #79fc9e !important;
+}
+
+#fullCalendar{
+	width: 60%;
+}
+#currentDate{
+	font-family: verdana;
+	font-size: 30px;
+	margin-left: 20%;
+}
+
+
+/* Got this from  */
+/*----------------------------------------- */
+#todaybtn{
+	position: absolute !important; 
+	left: 30% !important;
+
+}
+#goTo{
+	width: 60px;
+}
+
+.ogbtns{
+    font-size: small !important;
+}
+
+
+#displayedEvents{
+	position: absolute;
+	top: 200px;
+	right:50px;
+	border-style: dotted;
+	border-color: red;
+}
+
+#editEventBox{
+	position: absolute;
+	top:0px;
+	right: 50px;
+	border-style: dotted;
+	border-color: blue;
+}
