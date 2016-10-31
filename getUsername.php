@@ -1,8 +1,8 @@
 <?php
 ini_set("session.cookie_httponly", 1);
-if($_POST['token'] === $_SESSION['token']){
+session_start();
 	header("Content-Type: application/json");
-	session_start();
+	
 	if(isset($_SESSION['Username'])){
 		$username = $_SESSION['Username'];
 		echo json_encode(array(
@@ -15,5 +15,5 @@ if($_POST['token'] === $_SESSION['token']){
 			"success"=>false
 			));
 	}
-}
+
 ?>

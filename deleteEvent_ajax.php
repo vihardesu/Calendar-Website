@@ -1,7 +1,6 @@
 <?php
 ini_set("session.cookie_httponly", 1);
 session_start();
-if($_POST['token'] === $_SESSION['token']){
 header("Content-Type: application/json");
 
 if(isset($_SESSION['Username'])){
@@ -24,5 +23,5 @@ $mysqli = new mysqli('localhost', 'calendarUser', 'vihar', 'calendar');
 		}
 		
 	}
-}
+
 ?>

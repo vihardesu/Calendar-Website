@@ -64,8 +64,8 @@ Register:
 <br>
 Go To Date:
 <input data-role="none" type="date" id="jumpToDate">
-<button data-role="none" class="ogbtns" id="jumpTobtn">Go</button></div>
-<div id="eventResponses">
+<button data-role="none" class="ogbtns" id="jumpTobtn">Go</button>
+<div id="eventResponses"></div>
 
  <div data-role="main" class="ui-content">
     <a href="#myPopup" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-left">Create Event</a>
